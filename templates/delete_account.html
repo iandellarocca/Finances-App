@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+	<div>
+	<h2>Delete Account</h2>
+	<form action="http://raspberrypi:5000/Finances/DeleteAccount{{acc}}/submit" method="post">
+		<table>
+			<tr><td>Are you sure you wish to delete {{sys.accounts[acc].name}}?</td><td><input type="submit" value="Yes" /></td></tr>
+		</table>
+	</form>
+	</div>
+	<p><a href='http://raspberrypi:5000/Finances/summary'>Back</a></p>
+{% endblock %}

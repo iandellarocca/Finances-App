@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+	<div>
+		<h1>Summary</h1>
+	</div>
+	<p>
+		<table>
+			<tr><th>Total Income</th><td>£{{'%0.2f'|format(sys.total_income())}}</td></tr>
+			<tr><th>Total Outgoings</th><td>£{{'%0.2f'|format(sys.total_outgoings())}}</td></tr>
+		</table>
+	</p>
+	<p>
+		<table>
+			<thead>
+				<tr>
+					<th>Account Name</th>
+					<th>Total Income</th>
+					<th>Total Outgoings</th>
+					<th>Excess</th>
+				</tr>
+			</thead>
+			<tbody>	
+				{% for i in indices %}
+					<tr>
+						<td><a href='http://raspberrypi:5000/Finances/Account{{i}}'>{{sys.accounts[i].name}} </a></td> 
+						<td>£{{'%0.2f'|format(sys.accounts[i].total_income())}} </td> 
+						<td>£{{'%0.2f'|format(sys.accounts[i].total_outgoings())}}</td>
+						<td>£{{'%0.2f'|format(sys.accounts[i].total_income() - sys.accounts[i].total_outgoings())}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href='http://raspberrypi:5000/Finances/AddAccount'>Add Account</a>
+	</p>
+	<p><a href='http://raspberrypi:5000/Finances'>Back</a></p>
+{% endblock %}

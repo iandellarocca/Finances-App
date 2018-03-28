@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+	<div>
+	<h2>Add Account</h2>
+	<form action="http://raspberrypi:5000/Finances/AddAccount/submit" method="post">
+		<table>
+			<tr><td>Enter Name:</td><td><input type="text" name="name" /></td></tr>
+			<tr><td>Enter Owner:</td><td><input type="text" name="owner" /></td></tr>
+			<tr><td><input type="submit" value="submit" /></td><td></td></tr>
+		</table>
+	</form>
+	</div>
+	<p><a href='http://raspberrypi:5000/Finances/summary'>Back</a></p>
+{% endblock %}

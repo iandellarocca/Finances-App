@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+	<h3>Select a date</h3>
+	{% for date in dates %}
+		<p><a href="http://raspberrypi:5000/Finances/load/date-{{date}}">{{date}}</a></p>
+	{% endfor %}
+{% endblock %}

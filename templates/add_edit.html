@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+	<div>
+	<h2>{{action}} {{item}}</h2>
+	{% if action == "Edit" %} 
+		<form action="http://raspberrypi:5000/Finances/Account{{acc}}/Edit{{item}}-{{item_num}}/submit" method="post">
+			<table>
+				<tr><td>Enter Name</td><td><input type="text" name="name" value="{{edited_item.name}}" /></td></tr>
+				<tr><td>Enter Amount   £</td><td><input type="float" name="value" value="{{'%0.2f'|format(edited_item.get_value())}}" /></td></tr>
+				<tr><td>Enter Date</td><td><input type="number" name="date" value="{{edited_item.date}}" min="1" max="28" step="1" /></td></tr>
+				{% if item == "Transfer" %}
+					<tr><td>Select Target Account</td><td></td></tr>
+					{% for i in indices %}
+						<tr><td><input type="radio" name="target" value="{{i}}" {% if acc == i %} disabled {% endif %} {% if edited_item.target == sys.accounts[i] %} checked {% endif %} />{{sys.accounts[i].name}}</td><td /></tr>
+					{% endfor %}
+					<tr><td>Enter Rule (if needed)</td><td><input type="text" name="rule" {% if edited_item.rule %} value="{{edited_item.rule}}" {% endif %} /></td></tr>
+				{% endif %}
+				<tr><td><input type="submit" value="Submit" /></td><td></td></tr>
+			</table>
+		</form>
+	{% else %}
+		<form action="http://raspberrypi:5000/Finances/Account{{acc}}/Add{{item}}/submit" method="post">
+			<table>
+				<tr><td>Enter Name</td><td><input type="text" name="name" /></td></tr>
+				<tr><td>Enter Amount   £</td><td><input type="float" name="value" /></td></tr>
+				<tr><td>Enter Date</td><td><input type="number" name="date" min="1" max="28" step="1" /></td></tr>
+				{% if item == "Transfer" %}
+					<tr><td>Select Target Account</td><td></td></tr>
+					{% for i in indices %}
+						<tr><td><input type="radio" name="target" value="{{i}}" {% if acc == i %} disabled {% endif %} {% if i == 0 %} checked {% endif %} />{{sys.accounts[i].name}}</td><td /></tr>
+					{% endfor %}
+					<tr><td>Enter Rule (if needed)</td><td><input type="text" name="rule" /></td></tr>
+				{% endif %}
+				<tr><td><input type="submit" value="Submit" /></td><td></td></tr>
+			</table>
+		</form>
+	{% endif %}
+	</div>
+	<p><a href='http://raspberrypi:5000/Finances/Account{{acc}}/{{item}}s'>Back</a></p>
+{% endblock %}

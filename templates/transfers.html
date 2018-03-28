@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+	<div>
+		<h1>Transfers of {{sys.accounts[acc].name}}</h1>
+		<table border=1>
+			<tr><th>Total Transfers In</th><td>£{{'%0.2f'|format(sys.accounts[acc].total_in_transfers())}}</td></tr>
+		</table>
+		{% if transfersIN %}
+		<h3>List of Transfers In</h3>
+		<table border=1>
+			<tr>
+				<th>Transfer Name</th>
+				<th>Amount</th>
+				<th>Date</th>
+				<th>Source</th>
+			</tr>
+			{% for i in indicesIN %}
+				<tr>
+					<td><a href='http://raspberrypi:5000/Finances/Account{{acc}}/TransferIN{{i}}'>{{transfersIN[i].name}}</a></td>
+					<td>£{{'%0.2f'|format(transfersIN[i].get_value())}}</td>
+					<td>{{transfersIN[i].date}}</td>
+					<td>{{transfersIN[i].source.name}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+			<h3>No Transfers In</h3>
+		{% endif %}
+		{% if transfersOUT %}
+		<h3>List of Transfers Out</h3>
+		<table border=1>
+			<tr>
+				<th>Transfer Name</th>
+				<th>Amount</th>
+				<th>Date</th>
+				<th>Target</th>
+				<th>Edit</th>
+			</tr>
+			{% for i in indicesOUT %}
+				<tr>
+					<td><a href='http://raspberrypi:5000/Finances/Account{{acc}}/TransferOUT{{i}}'>{{transfersOUT[i].name}}</a></td>
+					<td>£{{'%0.2f'|format(transfersOUT[i].get_value())}}</td>
+					<td>{{transfersOUT[i].date}}</td>
+					<td>{{transfersOUT[i].target.name}}</td>
+					<td>
+						<a href='http://raspberrypi:5000/Finances/Account{{acc}}/EditTransfer-{{rootIndices[i]}}'>Edit</a>
+						<a href='http://raspberrypi:5000/Finances/Account{{acc}}/DeleteTransfer-{{rootIndices[i]}}'>Delete</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+			<h3>No Transfers Out</h3>
+		{% endif %}
+		<a href='http://raspberrypi:5000/Finances/Account{{acc}}/AddTransfer'>Add Transfer Out</a>
+	</div>
+	<p><a href='http://raspberrypi:5000/Finances/Account{{acc}}'>Back</a></p>
+{% endblock %}
