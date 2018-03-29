@@ -10,9 +10,11 @@
 				<tr><td>Enter Date</td><td><input type="number" name="date" value="{{edited_item.date}}" min="1" max="28" step="1" /></td></tr>
 				{% if item == "Transfer" %}
 					<tr><td>Select Target Account</td><td></td></tr>
-					{% for i in indices %}
-						<tr><td><input type="radio" name="target" value="{{i}}" {% if acc == i %} disabled {% endif %} {% if edited_item.target == sys.accounts[i] %} checked {% endif %} />{{sys.accounts[i].name}}</td><td /></tr>
+					<tr><td colspan="2">
+                    {% for i in indices %}
+					<p><input type="radio" name="target" value="{{i}}" {% if acc == i %} disabled {% endif %} {% if edited_item.target == sys.accounts[i] %} checked {% endif %} />{{sys.accounts[i].name}}</p>
 					{% endfor %}
+                    </td></tr>
 					<tr><td>Enter Rule (if needed)</td><td><input type="text" name="rule" {% if edited_item.rule %} value="{{edited_item.rule}}" {% endif %} /></td></tr>
 				{% endif %}
 				<tr><td><input type="submit" value="Submit" /></td><td></td></tr>

@@ -15,7 +15,7 @@
 			</tr>
 			{% for i in range %}
 				<tr>
-					<td><a href='/Finances/Account{{acc}}/Bill{{indices[i]}}'>{{sys.accounts[acc].bills[indices[i]].name}}</a></td>
+					<td><a href='/Finances/Account{{acc}}/EditBill-{{indices[i]}}'>{{sys.accounts[acc].bills[indices[i]].name}}</a></td>
 					<td>£{{'%0.2f'|format(sys.accounts[acc].bills[indices[i]].value)}}</td>
 					<td>{{sys.accounts[acc].bills[indices[i]].date}}</td>
 					<td>
