@@ -8,24 +8,24 @@
 		<h3>List of Incomes</h3>
 		<table border=1>
 			<tr>
-				<th><a href="http://raspberrypi:5000/Finances/Account{{acc}}/Incomes_name" >Income Name</a></th>
-				<th><a href="http://raspberrypi:5000/Finances/Account{{acc}}/Incomes_amount" >Amount</a></th>
-				<th><a href="http://raspberrypi:5000/Finances/Account{{acc}}/Incomes_date" >Date</a></th>
+				<th><a href="/Finances/Account{{acc}}/Incomes_name" >Income Name</a></th>
+				<th><a href="/Finances/Account{{acc}}/Incomes_amount" >Amount</a></th>
+				<th><a href="/Finances/Account{{acc}}/Incomes_date" >Date</a></th>
 				<th>Edit</th>
 			</tr>
 			{% for i in range %}
 				<tr>
-					<td><a href='http://raspberrypi:5000/Finances/Account{{acc}}/Income{{indices[i]}}'>{{sys.accounts[acc].incomes[indices[i]].name}}</a></td>
+					<td><a href='/Finances/Account{{acc}}/Income{{indices[i]}}'>{{sys.accounts[acc].incomes[indices[i]].name}}</a></td>
 					<td>£{{'%0.2f'|format(sys.accounts[acc].incomes[indices[i]].value)}}</td>
 					<td>{{sys.accounts[acc].incomes[indices[i]].date}}</td>
 					<td>
-						<a href='http://raspberrypi:5000/Finances/Account{{acc}}/EditIncome-{{indices[i]}}'>Edit</a>
-						<a href='http://raspberrypi:5000/Finances/Account{{acc}}/DeleteIncome-{{indices[i]}}'>Delete</a>
+						<a href='/Finances/Account{{acc}}/EditIncome-{{indices[i]}}'>Edit</a>
+						<a href='/Finances/Account{{acc}}/DeleteIncome-{{indices[i]}}'>Delete</a>
 					</td>
 				</tr>
 			{% endfor %}
 		</table>
-		<a href='http://raspberrypi:5000/Finances/Account{{acc}}/AddIncome'>Add Income</a>
+		<a href='/Finances/Account{{acc}}/AddIncome'>Add Income</a>
 	</div>
-	<p><a href='http://raspberrypi:5000/Finances/Account{{acc}}'>Back</a></p>
+	<p><a href='/Finances/Account{{acc}}'>Back</a></p>
 {% endblock %}

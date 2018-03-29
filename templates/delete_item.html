@@ -2,11 +2,11 @@
 {% block content %}
 	<div>
 	<h2>Delete {{item}}</h2>
-		<form action="http://raspberrypi:5000/Finances/Account{{acc}}/Delete{{item}}-{{item_num}}/submit" method="post">
+		<form action="/Finances/Account{{acc}}/Delete{{item}}-{{item_num}}/submit" method="post">
 			<table>
 				<tr><td>Are you sure you wish to delete {{ item_to_delete.name }}?</td><td><input type="submit" value="Yes" ></td></tr>
 			</table>
 		</form>
 	</div>
-	<p><a href='http://raspberrypi:5000/Finances/Account{{acc}}/{{item}}s'>Back</a></p>
+	<p><a href='/Finances/Account{{acc}}/{{item}}s'>Back</a></p>
 {% endblock %}

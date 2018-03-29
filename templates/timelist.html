@@ -4,7 +4,7 @@
 	<table>		
 		{% for i in indices %}
 			<tr>
-				<td><a href="http://raspberrypi:5000/Finances/load/date-{{date}}/entry-{{i}}">{{ times[i][:8] }}</a></td><td>{{ comments[i] }}</td>
+				<td><a href="/Finances/load/date-{{date}}/entry-{{i}}">{{ times[i][:8] }}</a></td><td>{{ comments[i] }}</td>
 			</tr>
 		{% endfor %}
 {% endblock %}

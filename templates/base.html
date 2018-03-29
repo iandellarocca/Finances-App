@@ -12,6 +12,23 @@
 			margin: 20px;
 		}
 
+		h2 {
+			color: white;
+			margin: 15px;
+		}
+
+		h3 {
+			text-align: left;
+			color: white;
+			margin: 15px;
+		}
+
+		h4 {
+			text-align: left;
+			color: white;
+			margin: 15px;
+		}
+
 		p {
 			border: 5px;
 			color: white;
@@ -28,9 +45,26 @@
 		}
 
 		table, tr, th, td {
-			background-color: white;
-			color:black;
+            border: 1px solid white;
+			background-color: black;
+			color:white;
 		}
+        
+        th {
+            border: 3px solid white;
+        }
+        
+        table, tr, td {
+            border-collapse: collapse;
+        }
+        
+        table {
+            border: 3px solid white;
+        }
+        
+        th, td {
+            padding: 15px;
+        }
 	</style>
 	<head>
 		<title>Finances</title>
@@ -38,8 +72,8 @@
 		<link rel="stylesheet" type="text/css" href="http://raspberrypi:5000/static/finstyle6.css">-->
 	</head>
 	<body>
-		<a href="http://raspberrypi:5000/Finances">
-			<img src="http://raspberrypi:5000/static/finances.jpg">
+		<a href="/Finances">
+			<img src="/static/finances.jpg">
 		</a>
 		{% block content %} {% endblock %}
 	</body>

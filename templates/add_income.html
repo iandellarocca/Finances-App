@@ -2,7 +2,7 @@
 {% block content %}
 	<div>
 	<h2>Add Income</h2>
-	<form action="http://raspberrypi:5000/Finances/Account{{acc}}/AddIncome/submit" method="post">
+	<form action="/Finances/Account{{acc}}/AddIncome/submit" method="post">
 		<table>
 			<tr><td>Enter Name</td><td><input type="text" name="name" /></td></tr>
 			<tr><td>Enter Amount</td><td><input type="float" name="value" /></td></tr>
@@ -11,5 +11,5 @@
 		</table>
 	</form>
 	</div>
-	<p><a href='http://raspberrypi:5000/Finances/Account{{acc}}/Incomes'>Back</a></p>
+	<p><a href='/Finances/Account{{acc}}/Incomes'>Back</a></p>
 {% endblock %}

@@ -3,20 +3,20 @@
 	<div>
 		<h1>{{sys.accounts[acc].name}}</h1>
 		<h2>Owned by: {{sys.accounts[acc].owner}}</h2>
-		<p><a href='http://raspberrypi:5000/Finances/EditAccount{{acc}}'>Edit</a> <a href='http://raspberrypi:5000/Finances/DeleteAccount{{acc}}'>Delete</a></p>
-		<h3><a href='http://raspberrypi:5000/Finances/Account{{acc}}/Incomes'>Incomes</a></h3>
+		<p><a href='/Finances/EditAccount{{acc}}'>Edit</a> <a href='/Finances/DeleteAccount{{acc}}'>Delete</a></p>
+		<h3><a href='/Finances/Account{{acc}}/Incomes'>Incomes</a></h3>
 		<table border=1>
 			<tr><th>Total Income</th><td>£{{'%0.2f'|format(sys.accounts[acc].total_income() - sys.accounts[acc].total_in_transfers())}}</td></tr>
 		</table>
-		<h3><a href='http://raspberrypi:5000/Finances/Account{{acc}}/Bills'>Bills</a></h3>
+		<h3><a href='/Finances/Account{{acc}}/Bills'>Bills</a></h3>
 		<table border=1>
 			<tr><th>Total Bills</th><td>£{{'%0.2f'|format(sys.accounts[acc].total_outgoings() - sys.accounts[acc].total_out_transfers())}}</td></tr>
 		</table>
-		<h3><a href='http://raspberrypi:5000/Finances/Account{{acc}}/Transfers'>Transfers</a></h3>
+		<h3><a href='/Finances/Account{{acc}}/Transfers'>Transfers</a></h3>
 		<table border=1>
 			<tr><th>Total Transfers In</th><td>£{{'%0.2f'|format(sys.accounts[acc].total_in_transfers())}}</td></tr>
 			<tr><th>Total Transfers Out</th><td>£{{'%0.2f'|format(sys.accounts[acc].total_out_transfers())}}</td></tr>
 		</table>
 	</div>
-	<p><a href='http://raspberrypi:5000/Finances/summary'>Back</a></p>
+	<p><a href='/Finances/summary'>Back</a></p>
 {% endblock %}

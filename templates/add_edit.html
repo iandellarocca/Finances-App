@@ -3,7 +3,7 @@
 	<div>
 	<h2>{{action}} {{item}}</h2>
 	{% if action == "Edit" %} 
-		<form action="http://raspberrypi:5000/Finances/Account{{acc}}/Edit{{item}}-{{item_num}}/submit" method="post">
+		<form action="/Finances/Account{{acc}}/Edit{{item}}-{{item_num}}/submit" method="post">
 			<table>
 				<tr><td>Enter Name</td><td><input type="text" name="name" value="{{edited_item.name}}" /></td></tr>
 				<tr><td>Enter Amount   £</td><td><input type="float" name="value" value="{{'%0.2f'|format(edited_item.get_value())}}" /></td></tr>
@@ -19,7 +19,7 @@
 			</table>
 		</form>
 	{% else %}
-		<form action="http://raspberrypi:5000/Finances/Account{{acc}}/Add{{item}}/submit" method="post">
+		<form action="/Finances/Account{{acc}}/Add{{item}}/submit" method="post">
 			<table>
 				<tr><td>Enter Name</td><td><input type="text" name="name" /></td></tr>
 				<tr><td>Enter Amount   £</td><td><input type="float" name="value" /></td></tr>
@@ -36,5 +36,5 @@
 		</form>
 	{% endif %}
 	</div>
-	<p><a href='http://raspberrypi:5000/Finances/Account{{acc}}/{{item}}s'>Back</a></p>
+	<p><a href='/Finances/Account{{acc}}/{{item}}s'>Back</a></p>
 {% endblock %}
