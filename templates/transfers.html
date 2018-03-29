@@ -16,7 +16,7 @@
 			</tr>
 			{% for i in indicesIN %}
 				<tr>
-					<td><a href='/Finances/Account{{acc}}/TransferIN{{i}}'>{{transfersIN[i].name}}</a></td>
+					<td>{{transfersIN[i].name}}</td>
 					<td>£{{'%0.2f'|format(transfersIN[i].get_value())}}</td>
 					<td>{{transfersIN[i].date}}</td>
 					<td>{{transfersIN[i].source.name}}</td>
@@ -38,7 +38,7 @@
 			</tr>
 			{% for i in indicesOUT %}
 				<tr>
-					<td><a href='/Finances/Account{{acc}}/TransferOUT{{i}}'>{{transfersOUT[i].name}}</a></td>
+					<td><a href='/Finances/Account{{acc}}/EditTransfer-{{rootIndices[i]}}'>{{transfersOUT[i].name}}</a></td>
 					<td>£{{'%0.2f'|format(transfersOUT[i].get_value())}}</td>
 					<td>{{transfersOUT[i].date}}</td>
 					<td>{{transfersOUT[i].target.name}}</td>
