@@ -16,7 +16,7 @@
 			</tr>
 			{% for i in indicesIN %}
 				<tr>
-					<td><a href='http://raspberrypi:5000/Finances/Account{{acc}}/TransferIN{{i}}'>{{transfersIN[i].name}}</a></td>
+					<td><a href='/Finances/Account{{acc}}/TransferIN{{i}}'>{{transfersIN[i].name}}</a></td>
 					<td>£{{'%0.2f'|format(transfersIN[i].get_value())}}</td>
 					<td>{{transfersIN[i].date}}</td>
 					<td>{{transfersIN[i].source.name}}</td>
@@ -38,13 +38,13 @@
 			</tr>
 			{% for i in indicesOUT %}
 				<tr>
-					<td><a href='http://raspberrypi:5000/Finances/Account{{acc}}/TransferOUT{{i}}'>{{transfersOUT[i].name}}</a></td>
+					<td><a href='/Finances/Account{{acc}}/TransferOUT{{i}}'>{{transfersOUT[i].name}}</a></td>
 					<td>£{{'%0.2f'|format(transfersOUT[i].get_value())}}</td>
 					<td>{{transfersOUT[i].date}}</td>
 					<td>{{transfersOUT[i].target.name}}</td>
 					<td>
-						<a href='http://raspberrypi:5000/Finances/Account{{acc}}/EditTransfer-{{rootIndices[i]}}'>Edit</a>
-						<a href='http://raspberrypi:5000/Finances/Account{{acc}}/DeleteTransfer-{{rootIndices[i]}}'>Delete</a>
+						<a href='/Finances/Account{{acc}}/EditTransfer-{{rootIndices[i]}}'>Edit</a>
+						<a href='/Finances/Account{{acc}}/DeleteTransfer-{{rootIndices[i]}}'>Delete</a>
 					</td>
 				</tr>
 			{% endfor %}
@@ -52,7 +52,7 @@
 		{% else %}
 			<h3>No Transfers Out</h3>
 		{% endif %}
-		<a href='http://raspberrypi:5000/Finances/Account{{acc}}/AddTransfer'>Add Transfer Out</a>
+		<a href='/Finances/Account{{acc}}/AddTransfer'>Add Transfer Out</a>
 	</div>
-	<p><a href='http://raspberrypi:5000/Finances/Account{{acc}}'>Back</a></p>
+	<p><a href='/Finances/Account{{acc}}'>Back</a></p>
 {% endblock %}

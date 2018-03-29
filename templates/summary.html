@@ -22,7 +22,7 @@
 			<tbody>	
 				{% for i in indices %}
 					<tr>
-						<td><a href='http://raspberrypi:5000/Finances/Account{{i}}'>{{sys.accounts[i].name}} </a></td> 
+						<td><a href='/Finances/Account{{i}}'>{{sys.accounts[i].name}} </a></td> 
 						<td>£{{'%0.2f'|format(sys.accounts[i].total_income())}} </td> 
 						<td>£{{'%0.2f'|format(sys.accounts[i].total_outgoings())}}</td>
 						<td>£{{'%0.2f'|format(sys.accounts[i].total_income() - sys.accounts[i].total_outgoings())}}</td>
@@ -30,7 +30,7 @@
 				{% endfor %}
 			</tbody>
 		</table>
-		<a href='http://raspberrypi:5000/Finances/AddAccount'>Add Account</a>
+		<a href='/Finances/AddAccount'>Add Account</a>
 	</p>
-	<p><a href='http://raspberrypi:5000/Finances'>Back</a></p>
+	<p><a href='/Finances'>Back</a></p>
 {% endblock %}

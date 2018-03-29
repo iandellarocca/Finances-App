@@ -12,6 +12,9 @@ class Bill:
 		self.value = kwlib["value"]
 		self.date = kwlib["date"]
 		self.account = kwlib["account"]
+        
+	def get_value(self):
+		return self.value
 	
 	def render_xml_node(self):
 		return '\t\t<Bill name="{}" value="{}" date="{}" />'.format(self.name, self.value, self.date)
@@ -25,6 +28,7 @@ class Bill:
 class Income(Bill):
 	def render_xml_node(self):
 		return '\t\t<Income name="{}" value="{}" date="{}" />'.format(self.name, self.value, self.date)
+        
 
 class Transfer:
 	def __init__(self, **kwargs):
@@ -39,7 +43,7 @@ class Transfer:
 		self.name = kwlib["name"]
 		self.value = kwlib["value"]
 		self.date = kwlib["date"]
-		self.source = kwlib["source"]
+		self.source = kwlib["source"]	
 		self.target = kwlib["target"]
 		self.sys = kwlib["sys"]
 		self.rule = kwlib["rule"]
