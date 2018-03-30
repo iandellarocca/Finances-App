@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-	<h3>Select a date</h3>
-	{% for date in dates %}
-		<p><a href="/Finances/load/date-{{date}}">{{date}}</a></p>
-	{% endfor %}
+	<div>
+		<h3>Select a date</h3>
+		{% for date in dates %}
+			<p><a href="/Finances/load/date-{{date}}">{{date}}</a></p>
+		{% endfor %}
+	</div>
 {% endblock %}

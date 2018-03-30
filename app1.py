@@ -83,7 +83,7 @@ def make_curve(accnum):
 	ax.set_ylim(ymin=0)
 	ax.set_xlabel("Date")
 	ax.set_ylabel("Minimum Balance, "+unichr(163))
-	ax.set_xticks(np.arange(15)*2 + 1)
+	ax.set_xticks(np.arange(16)*2 + 1)
 	ax.xaxis.labelpad=0
 	today = datetime.now().day
 	ax.vlines(today, ymin=0, ymax=curve[today], colors="r", zorder=3)
