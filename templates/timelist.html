@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-	<h3>Select an entry</h3>
-	<table>		
-		{% for i in indices %}
-			<tr>
-				<td><a href="/Finances/load/date-{{date}}/entry-{{i}}">{{ times[i][:8] }}</a></td><td>{{ comments[i] }}</td>
-			</tr>
-		{% endfor %}
+	<div>
+		<h3>Select an entry</h3>
+		<table>		
+			{% for i in indices %}
+				<tr>
+					<td><a href="/Finances/load/date-{{date}}/entry-{{i}}">{{ times[i][:8] }}</a></td><td>{{ comments[i] }}</td>
+				</tr>
+			{% endfor %}
+	</div>
 {% endblock %}

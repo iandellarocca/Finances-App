@@ -3,6 +3,9 @@
 
 from Finances.System import System, fgzlib_date_list, fgzlib_time_list
 from flask import Flask, render_template, redirect, url_for, request
+import matplotlib.pyplot as plt
+import numpy as np
+from datetime import datetime
 
 class Instance:
 	def __init__(self):
@@ -64,11 +67,36 @@ def display_summary():
 		return redirect(url_for("financesMain"))
 	return render_template("summary.html", sys=sys.sys, indices=range(len(sys.sys.accounts)))
 
+def make_curve(accnum):
+	curve = sys.sys.accounts[accnum].get_curve()
+	fig, ax = plt.subplots(figsize=(7,3))
+	fig.patch.set_facecolor('black')
+	ax.set_facecolor('black')
+	for spine in ax.spines:
+		ax.spines[spine].set_color('white')
+	ax.tick_params(axis='x', colors='white')
+	ax.tick_params(axis='y', colors='white')
+	ax.yaxis.label.set_color('white')
+	ax.xaxis.label.set_color('white')
+	ax.step(np.arange(31), curve, where="pre", c='white', zorder=1)
+	ax.set_xlim(xmin=0.5, xmax=30.5)
+	ax.set_ylim(ymin=0)
+	ax.set_xlabel("Date")
+	ax.set_ylabel("Minimum Balance, "+unichr(163))
+	ax.set_xticks(np.arange(16)*2 + 1)
+	ax.xaxis.labelpad=0
+	today = datetime.now().day
+	ax.vlines(today, ymin=0, ymax=curve[today], colors="r", zorder=3)
+	ax.text(today, curve[today], unichr(163)+"{}".format(curve[today]), color="r")
+	plt.savefig("static/curve.png", dpi=160, 
+			    facecolor=fig.get_facecolor(), edgecolor='none')
+    
 @app.route('/Finances/Account<int:accnum>')
 def display_account(accnum):
 	if sys.sys is None:
 		return redirect(url_for("financesMain"))
-	return render_template("account.html", sys=sys.sys, acc=accnum)
+	make_curve(accnum)
+	return render_template("account.html", sys=sys.sys, acc=accnum, img=datetime.now().strftime('%S%f'))
 
 @app.route('/Finances/Account<int:accnum>/Bills')
 @app.route('/Finances/Account<int:accnum>/Bills_<order>')

@@ -6,24 +6,32 @@ class Bill:
 		kwlib = {"name":"", 
 				 "value":0.0, 
 				 "date":0,
-				 "account":None}
+				 "account":None,
+                 "standing":False}
 		kwlib.update(kwargs)
 		self.name = kwlib["name"]
 		self.value = kwlib["value"]
 		self.date = kwlib["date"]
 		self.account = kwlib["account"]
+        # True if standing order, false if Direct Debit
+		self.is_standing_order = kwlib["standing"]
         
 	def get_value(self):
 		return self.value
 	
 	def render_xml_node(self):
-		return '\t\t<Bill name="{}" value="{}" date="{}" />'.format(self.name, self.value, self.date)
+		return '\t\t<Bill name="{}" value="{}" date="{}" standing="{}" />'.format(self.name, self.value, self.date, int(self.is_standing_order))
 		
 	@classmethod
 	def load_from_xml(cls, element):
+		try:
+			standing=bool(element.attrib["standing"])
+		except:
+			standing=False
 		return cls(name=element.attrib["name"],
 				   value=float(element.attrib["value"]),
-				   date=int(element.attrib["date"]))
+				   date=int(element.attrib["date"]),
+                   standing=standing)
 
 class Income(Bill):
 	def render_xml_node(self):
@@ -38,7 +46,8 @@ class Transfer:
 				 "rule":None,
 				 "source":None,
 				 "target":None,
-				 "sys":None}
+				 "sys":None
+                 }
 		kwlib.update(kwargs)
 		self.name = kwlib["name"]
 		self.value = kwlib["value"]
