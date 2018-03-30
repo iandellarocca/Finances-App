@@ -1,6 +1,7 @@
 """ Account module
 """
 
+import numpy as np
 from Bill import Bill, Income, Transfer
 
 class Account:
@@ -73,6 +74,25 @@ class Account:
 				self.delete_transfer_by_index(i)
 				return
 		
+	def get_curve(self):
+		gradient = 0.
+		for bill in self.bills:
+		    if bill.date == -1:
+		        gradient += bill.value
+		gradient /= 30.
+		values = np.arange(31) * (-gradient)
+		for bill in self.bills:
+		    if bill.date > 0:
+		        values[bill.date:] -= bill.value
+		for income in self.incomes:
+		    values[income.date:] += income.value
+		for trans in self.out_transfers():
+		    values[trans.date:] -= trans.value
+		for trans in self.in_transfers():
+		    values[trans.date:] += trans.value
+		values += values.min()
+		return values
+        
 	def render_xml_node(self):
 		node = '\t<Account name="{}" owner="{}" > \n'.format(self.name, self.owner)
 		for bill in self.bills:

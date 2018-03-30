@@ -17,6 +17,8 @@
 			<tr><th>Total Transfers In</th><td>£{{'%0.2f'|format(sys.accounts[acc].total_in_transfers())}}</td></tr>
 			<tr><th>Total Transfers Out</th><td>£{{'%0.2f'|format(sys.accounts[acc].total_out_transfers())}}</td></tr>
 		</table>
+		<p>Minimum Balance Over Month:</p>
+		<p><img src="/static/curve.png?{{img}}"></p>
 	</div>
 	<p><a href='/Finances/summary'>Back</a></p>
 {% endblock %}

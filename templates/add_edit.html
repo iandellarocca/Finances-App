@@ -7,7 +7,7 @@
 			<table>
 				<tr><td>Enter Name</td><td><input type="text" name="name" value="{{edited_item.name}}" /></td></tr>
 				<tr><td>Enter Amount   £</td><td><input type="float" name="value" value="{{'%0.2f'|format(edited_item.get_value())}}" /></td></tr>
-				<tr><td>Enter Date</td><td><input type="number" name="date" value="{{edited_item.date}}" min="1" max="28" step="1" /></td></tr>
+				<tr><td>Enter Date</td><td><input type="number" name="date" value="{{edited_item.date}}" min="-1" max="28" step="1" /></td></tr>
 				{% if item == "Transfer" %}
 					<tr><td>Select Target Account</td><td></td></tr>
 					<tr><td colspan="2">
