@@ -80,7 +80,7 @@ class Account:
 		    if bill.date == -1:
 		        gradient += bill.value
 		gradient /= 30.
-		values = np.arange(31) * (-gradient)
+		values = np.arange(32) * (-gradient)
 		for bill in self.bills:
 		    if bill.date > 0:
 		        values[bill.date:] -= bill.value
@@ -90,7 +90,7 @@ class Account:
 		    values[trans.date:] -= trans.value
 		for trans in self.in_transfers():
 		    values[trans.date:] += trans.value
-		values += values.min()
+		values -= values.min()
 		return values
         
 	def render_xml_node(self):

@@ -78,7 +78,7 @@ def make_curve(accnum):
 	ax.tick_params(axis='y', colors='white')
 	ax.yaxis.label.set_color('white')
 	ax.xaxis.label.set_color('white')
-	ax.step(np.arange(31), curve, where="pre", c='white', zorder=1)
+	ax.step(np.arange(32), curve, where="pre", c='white', zorder=1)
 	ax.set_xlim(xmin=0.5, xmax=30.5)
 	ax.set_ylim(ymin=0)
 	ax.set_xlabel("Date")
