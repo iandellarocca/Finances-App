@@ -7,10 +7,14 @@ from Bill import Bill, Income, Transfer
 class Account:
 	def __init__(self, **kwargs):
 		kwlib = {"name":"",
-				 "owner":""}
+				 "owner":"",
+				 "account_num":-1,
+				 "sort_code":""}
 		kwlib.update(kwargs)
 		self.name = kwlib["name"]
 		self.owner = kwlib["owner"]
+		self.account_num = -1
+		self.sort_code = ""
 		self.bills = []
 		self.incomes = []
 		self.transfers = []
@@ -94,7 +98,10 @@ class Account:
 		return values
         
 	def render_xml_node(self):
-		node = '\t<Account name="{}" owner="{}" > \n'.format(self.name, self.owner)
+		node = '\t<Account name="{}" owner="{}" acc_num="{}" sort_code="{}"> \n'.format(self.name, 
+																						self.owner,
+																						self.account_num,
+																						self.sort_code)
 		for bill in self.bills:
 			node += bill.render_xml_node() + '\n'
 		for income in self.incomes:
@@ -103,8 +110,14 @@ class Account:
 		
 	@classmethod
 	def load_from_xml(cls, element):
-		acc = cls(name=element.attrib["name"],
-			      owner=element.attrib["owner"])
+		try:
+			acc = cls(name=element.attrib["name"],
+					  owner=element.attrib["owner"],
+					  account_num=element.attrib["acc_num"],
+					  sort_code=element.attrib["sort_code"])
+		except:
+			acc = cls(name=element.attrib["name"],
+					  owner=element.attrib["owner"])
 		for bill_element in element.findall("Bill"):
 			acc.bills.append(Bill.load_from_xml(bill_element))
 		for income_element in element.findall("Income"):
