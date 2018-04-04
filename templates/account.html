@@ -3,6 +3,10 @@
 	<div>
 		<h1>{{sys.accounts[acc].name}}</h1>
 		<h2>Owned by: {{sys.accounts[acc].owner}}</h2>
+		{% if sys.accounts[acc].account_num != -1 %}
+		<p>Account Number: {{sys.accounts[acc].account_num}}</p>
+		<p>Sort Code: {{sys.accounts[acc].sort_code}}</p>
+		{% endif %}
 		<p><a href='/Finances/EditAccount{{acc}}'>Edit</a> <a href='/Finances/DeleteAccount{{acc}}'>Delete</a></p>
 		<h3><a href='/Finances/Account{{acc}}/Incomes'>Incomes</a></h3>
 		<table border=1>

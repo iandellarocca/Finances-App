@@ -178,6 +178,8 @@ def edit_account(accnum):
 	if request.method == "POST":
 		sys.sys.accounts[accnum].name = request.form["name"]
 		sys.sys.accounts[accnum].owner = request.form["owner"]
+		sys.sys.accounts[accnum].account_num = request.form["acc_num"]
+		sys.sys.accounts[accnum].sort_code = request.form["sort_code"]
 		if sys.save:
 			sys.sys.write_xml("Edited account: '" + request.form["name"] +"'")
 		return redirect(url_for("display_summary"))

@@ -13,8 +13,8 @@ class Account:
 		kwlib.update(kwargs)
 		self.name = kwlib["name"]
 		self.owner = kwlib["owner"]
-		self.account_num = -1
-		self.sort_code = ""
+		self.account_num = kwlib["account_num"]
+		self.sort_code = kwlib["sort_code"]
 		self.bills = []
 		self.incomes = []
 		self.transfers = []
@@ -113,7 +113,7 @@ class Account:
 		try:
 			acc = cls(name=element.attrib["name"],
 					  owner=element.attrib["owner"],
-					  account_num=element.attrib["acc_num"],
+					  account_num=int(element.attrib["acc_num"]),
 					  sort_code=element.attrib["sort_code"])
 		except:
 			acc = cls(name=element.attrib["name"],
