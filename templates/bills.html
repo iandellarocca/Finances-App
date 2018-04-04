@@ -17,7 +17,11 @@
 				<tr>
 					<td><a href='/Finances/Account{{acc}}/EditBill-{{indices[i]}}'>{{sys.accounts[acc].bills[indices[i]].name}}</a></td>
 					<td>£{{'%0.2f'|format(sys.accounts[acc].bills[indices[i]].value)}}</td>
-					<td>{{sys.accounts[acc].bills[indices[i]].date}}</td>
+					{% if sys.accounts[acc].bills[indices[i]].date > 0 %}
+						<td>{{sys.accounts[acc].bills[indices[i]].date}}</td>
+					{% else %}
+						<td>-</td>
+					{% endif %}
 					<td>
 						<a href='/Finances/Account{{acc}}/EditBill-{{indices[i]}}'>Edit</a>
 						<a href='/Finances/Account{{acc}}/DeleteBill-{{indices[i]}}'>Delete</a>

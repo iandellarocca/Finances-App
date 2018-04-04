@@ -6,6 +6,7 @@ __pycache__/
 # finances savefiles
 *.fgz
 *.lib
+static/curve.png
 
 # C extensions
 *.so
