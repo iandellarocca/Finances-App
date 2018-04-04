@@ -277,10 +277,13 @@ def edit_item(accnum, item, itemnum):
 							  "' of: '" + sys.sys.accounts[accnum].name + "'")
 			return redirect(url_for("display_bills", accnum=accnum))
 		if item == "Transfer":
+			rule = request.form["rule"]
+			if rule == "":
+				rule = None
 			sys.sys.accounts[accnum].transfers[itemnum].name = request.form["name"]
 			sys.sys.accounts[accnum].transfers[itemnum].value = float(request.form["value"])
 			sys.sys.accounts[accnum].transfers[itemnum].date = int(request.form["date"])
-			sys.sys.accounts[accnum].transfers[itemnum].set_rule(request.form["rule"])
+			sys.sys.accounts[accnum].transfers[itemnum].set_rule(rule)
 			sys.sys.accounts[accnum].transfers[itemnum].target = sys.sys.accounts[int(request.form["target"])]
 			if sys.save:
 				sys.sys.write_xml("Edited transfer: '" + request.form["name"] + 

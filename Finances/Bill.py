@@ -92,6 +92,8 @@ class Transfer:
 				       source=sys.accounts[int(element.attrib["source"])],
 				       target=sys.accounts[int(element.attrib["target"])],
 				       sys=sys)
+		if transfer.rule == "":
+			transfer.rule = None
 		transfer.source.transfers.append(transfer)
 		transfer.target.transfers.append(transfer)
 		return transfer
