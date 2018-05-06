@@ -260,6 +260,8 @@ def edit_item(accnum, item, itemnum):
 	if sys.sys is None:
 		return redirect(url_for("financesMain"))
 	if request.method == "POST":
+		if int(request.form["date"]) > 31:
+			return redirect(url_for("easter"))
 		if item == "Income":
 			sys.sys.accounts[accnum].incomes[itemnum].name = request.form["name"]
 			sys.sys.accounts[accnum].incomes[itemnum].value = float(request.form["value"])
@@ -369,6 +371,10 @@ def order_indices_by_item_name(item_list):
 		insert_in_order(i, item)
 	indices.reverse()
 	return indices
+	
+@app.route('/Finances/Easter')
+def easter():
+	return redirect("https://orig00.deviantart.net/535c/f/2011/095/4/1/backwards_walking_egg_by_genshihebi-d3da1ag.gif")
 	
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
