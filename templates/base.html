@@ -40,7 +40,7 @@
 
 		div {
 			text-align: center;
-			max-width: 500px;
+			max-width: 600px;
 			margin: auto;
 		}
 		
@@ -67,12 +67,43 @@
         }
         
         table {
+			width: 100%;
             border: 3px solid white;
         }
         
         th, td {
             padding: 15px;
         }
+		
+		input {
+			border: none;
+			border-bottom: 2px solid white;
+			background-color: black;
+			color: white;
+		}
+		
+		table.input, tr.input, td.input, th.input {
+            border: none;
+			background-color: black;
+			color:white;
+		}
+		
+		th.input {
+			text-align: right;
+		}
+		
+		th.input#center {
+			text-align: center;
+		}
+		
+		th.input#target {
+			text-align: center;
+			padding-bottom: 0;
+		}
+		
+		td.input#target {
+			padding-top: 0;
+		}
 	</style>
 	<head>
 		<title>Finances</title>

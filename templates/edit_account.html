@@ -3,14 +3,20 @@
 	<div>
 		<h2>Edit Account</h2>
 		<form action="/Finances/EditAccount{{acc}}/submit" method="post">
-			<table>
-				<tr><td>Name:</td><td><input type="text" name="name" value="{{sys.accounts[acc].name}}"/></td></tr>
-				<tr><td>Owner:</td><td><input type="text" name="owner" value="{{sys.accounts[acc].owner}}" /></td></tr>
-				<tr><td>Account Number:</td><td><input type="int" name="acc_num" value="{{sys.accounts[acc].account_num}}" /></td></tr>
-				<tr><td>Sort Code:</td><td><input type="text" name="sort_code" value="{{sys.accounts[acc].sort_code}}" /></td></tr>
-				<tr><td><input type="submit" value="submit" /></td><td></td></tr>
-			</table>
+			<table class="input">
+				<tr class="input"><th class="input">Name:</th><td class="input"><input type="text" name="name" value="{{sys.accounts[acc].name}}"/></td></tr>
+				<tr class="input"><th class="input">Owner:</th><td class="input"><input type="text" name="owner" value="{{sys.accounts[acc].owner}}" /></td></tr>
+				<tr class="input"><th class="input">Account Number:</th><td class="input"><input type="int" name="acc_num" value="{{sys.accounts[acc].account_num}}" /></td></tr>
+				<tr class="input"><th class="input">Sort Code:</th><td class="input"><input type="text" name="sort_code" value="{{sys.accounts[acc].sort_code}}" /></td></tr>
+				<tr class="input">
+					<th class="input"><input type="submit" value="submit" /></th>
 		</form>
-		<p><a href='/Finances/summary'>Back</a></p>
+					<form action='/Finances/summary'>
+						<td class="input">
+							<input type="submit" value="back" />
+						</td>
+					</form>
+				</tr>
+			</table>
 	</div>
 {% endblock %}
